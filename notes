@@ -1,0 +1,21 @@
+## INIT
+docker-compose up --build
+docker-compose down
+
+## Run
+docker-compose exec app npm run dev
+docker-compose exec mongo mongo -u root
+
+# permission issues
+sudo chown -R $USER <path-to-folder>
+sudo chown -R $USER data/ && rm -R data/
+
+to add mongo user auth
+mongo -u root
+#select db
+> use myapp
+#create user
+> db.createUser({ user: "dev", pwd: "d3v", roles: [{ "role" : "readWrite", "db" : "myapp" }] })
+
+result
+Successfully added user: { "user" : "dev", "roles" : [ ] }
